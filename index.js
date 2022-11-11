@@ -2,7 +2,7 @@ let http = require('http')
 let server = http.createServer(function (req, res) {
     // This callback handles each incoming request 
 })
-
+require('dotenv').config()
 const express = require('express')
 const app = express()
 
@@ -10,4 +10,8 @@ app.get('/', (req, res) => {
     res.send('Hello world!')
 })
 
-app.listen(3000)
+app.get('*', (req, res) => {
+    res.status(404).send('<h1>404 Page</h1>')
+})
+
+app.listen(process.env.PORT)
