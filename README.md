@@ -4,9 +4,8 @@ REST-Rant is an app where users can review restaurants.
 
 
 
-| Syntax  | Description              | Test Text                                       |
-| :---    |    :----:                |          ---:                                   |
 | Method  | Path                     | Purpose                                         |
+| ------ | ------------------------------------- | ----------------------------- |
 | Get     |     /                    | Home page                                       |
 | Get     | /places                  | Places index page                               |
 | Post    | /places                  |Create a new place                               |
@@ -22,8 +21,16 @@ REST-Rant is an app where users can review restaurants.
 
 
 
+**places** 
+
+| Field | Type |
+| ---------- | ------------ |
+| _id | Object ID |
+| name | String |
+| city | String |
+| state | String |
+| cuisines | String |
+| pic | String |
 
 
 
-
--Example store, Wilmington,CA,Mexican food
