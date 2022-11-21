@@ -1,7 +1,4 @@
-let http = require('http')
-let server = http.createServer(function (req, res) {
-    // This callback handles each incoming request 
-})
+
 require('dotenv').config()
 const express = require('express')
 const app = express()
