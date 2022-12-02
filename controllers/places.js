@@ -6,7 +6,6 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    console.log(req.body)
     if (!req.body.pic) {
       // Default image if one is not provided
       req.body.pic = 'http://placekitten.com/400/400'
@@ -26,22 +25,19 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
-      res.render('error404')
+    let i = Number(req.params.id)
+    if (isNaN(i)) {
+        res.render('error404')
     }
-    else if (!places[id]) {
-      res.render('error404')
+    else if (!places[i]) {
+        res.render('error404')
     }
     else {
-        res.render('places/show', { place: places[id] })
-
+        res.render('places/show', { place: places[i], i })
     }
-  })
-  
-  
+})
 
-  router.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     let i = Number(req.params.id)
     if (isNaN(i)) {
         res.render('error404')
@@ -82,19 +78,18 @@ router.delete('/:id', (req, res) => {
     }
 })
 
-router.get('/:id', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
-      res.render('error404')
+router.get('/:id/edit', (req, res) => {
+    let i = Number(req.params.id)
+    if (isNaN(i)) {
+        res.render('error404')
     }
-    else if (!places[id]) {
-      res.render('error404')
+    else if (!places[i]) {
+        res.render('error404')
     }
-    else {
-      res.render('places/show', { place: places[id], id })
+    else { 
+        res.render('places/edit', { place: places[i], i})
     }
-  })
-  
+})
 
 router.post('/:id/rant', (req, res) => {
     res.send('GET /places/:id/rant stub')
