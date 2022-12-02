@@ -49,3 +49,10 @@ main {
   background-color: white;
 }
 
+form {
+  display: inline;
+}
+
+.inactive {
+  color: gray;
+}
