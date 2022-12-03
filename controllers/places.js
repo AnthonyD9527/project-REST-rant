@@ -4,17 +4,20 @@ const db = require('../models')
 router.get('/', (req, res) => {
     db.Place.find()
     .then((places) => {
-      res.render('places/index', { places })
+        res.render('places/index', { places })
     })
     .catch(err => {
-      console.log(err) 
-      res.render('error404')
+        console.log('err', err)
+        res.render('error404')
     })
 })
 
-
-
 router.post('/', (req, res) => {
+    if (!req.body.pic) {
+      // Default image if one is not provided
+      req.body.pic = 'http://placekitten.com/400/400'
+    }
+
     db.Place.create(req.body)
     .then(() => {
         res.redirect('/places')
@@ -23,12 +26,10 @@ router.post('/', (req, res) => {
         console.log('err', err)
         res.render('error404')
     })
-  })
-  
-  
+})
 
 router.get('/new', (req, res) => {
-  res.render('places/new')
+    res.render('places/new')
 })
 
 router.get('/:id', (req, res) => {
@@ -42,25 +43,32 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
 router.put('/:id', (req, res) => {
-  res.send('PUT /places/:id stub')
+    res.render('PUT /places/:id stub')
 })
 
 router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub')
+    db.Place.findByIdAndDelete(req.params.id)
+    .then(place => {
+        res.redirect('/places')
+    })
+    .catch(err => {
+        console.log('err', err)
+        res.render('error404')
+    })
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.send('GET edit form stub')
+    res.send('GET edit form stub')
 })
 
 router.post('/:id/rant', (req, res) => {
-  res.send('GET /places/:id/rant stub')
+    res.send('GET /places/:id/rant stub')
 })
 
 router.delete('/:id/rant/:rantId', (req, res) => {
     res.send('GET /places/:id/rant/:rantId stub')
 })
+
 
 module.exports = router
