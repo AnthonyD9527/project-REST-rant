@@ -56,3 +56,7 @@ form {
 .inactive {
   color: gray;
 }
+
+.border {
+  border: 1px solid grey;
+}
