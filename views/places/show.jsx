@@ -82,6 +82,15 @@ function show (data) {
                 <label htmlFor='author'>author</label>
                 <input className='form-control' id='author' name='author' required />
               </div>
+              <div className="form-group">
+              <label htmlForr="stars">star rating</label>
+              <input type="number" className="form-control" id="stars" min={0.5} max={5} name="stars" step={0.5} value={5} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="rant">Rant?</label>
+                  <input className="form-control" id="rant" name="rant" type="checkbox" value={true} />
+                    </div>
+                    <input className="btn btn-primary" type="submit" value="Add Comment"/>
               
             </form>
             
